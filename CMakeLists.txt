@@ -14,7 +14,7 @@ endif()
 if(WIN32)
   if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     MESSAGE("==================== USING MSVC TO COMILE ====================")
-    add_compile_options(/wd4819 /wd4244 /wd4267 /wd4305 "/Zc:__cplusplus")
+    add_compile_options(/wd4819 /wd4244 /wd4267 /wd4305 "/Zc:__cplusplus" )
     set(CMAKE_CXX_FLAGS_DEBUG "/O2")
     set(CMAKE_CXX_FLAGS_RELEASE "/O2")
   else()
@@ -32,27 +32,4 @@ endif()
 set(THIRD_DIR ${PROJECT_SOURCE_DIR}/3rdparty)
 
 add_subdirectory(${THIRD_DIR})
-
-add_executable(
-  ${PROJECT_NAME} 
-  ${PROJECT_SOURCE_DIR}/src/imgui_demo.cpp
-)
-
-target_include_directories(
-  ${PROJECT_NAME}
-  PRIVATE
-    ${THIRD_DIR}/imgui
-    ${THIRD_DIR}/implot
-    ${THIRD_DIR}/glfw/include
-    ${THIRD_DIR}/glad/include
-    ${OPENGL_INCLUDE_DIRS}
-)
-
-target_link_libraries(
-  ${PROJECT_NAME}
-  IMGUI_LIB
-  IMPLOT_LIB
-  glfw
-  glad
-  ${OPENGL_LIBRARIES}
-)
+add_subdirectory(${PROJECT_SOURCE_DIR}/project)
