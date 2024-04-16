@@ -57,5 +57,6 @@ BraceWrapping:
   AfterUnion:	false
   BeforeCatch:	false
   BeforeElse:	true
+  BeforeCatch: true
   IndentBraces:	false
   SplitEmptyRecord: false
